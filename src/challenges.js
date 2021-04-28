@@ -20,7 +20,7 @@ function splitSentence(str) {
 // Desafio 4
 function concatName(arrayStr) {
   const first = arrayStr[0];
-  const last = arrayStr [arrayStr.length-1];
+  const last = arrayStr[arrayStr.length - 1];
   return `${first} ${last}`;
 }
 
@@ -35,7 +35,7 @@ function footballPoints(wins, ties) {
 
 // Desafio 6
 function highestCount(numbers) {
-  numbers.sort((e,f) => f-e);
+  numbers.sort((e, f) => f - e);
   if (numbers.length > 0) {
     let biggest = 0;
     let counts = 0;
@@ -51,7 +51,7 @@ function highestCount(numbers) {
 }
 
 // Desafio 7
-function catAndMouse(mouse, cat1, cat2) {;
+function catAndMouse(mouse, cat1, cat2) {
   if (mouse - cat1 === mouse - cat2) {
     return 'os gatos trombam e o rato foge'
   }
@@ -125,19 +125,19 @@ function techList(tech, name) {
 
 function repeatCounter(phoneNumber) {
   let count = 0;
-    let stop = false;
-    for (let phone of phoneNumber) {
-      for (let otherPhone of phoneNumber) {
-        if (phone === otherPhone) {
-          count += 1;
-        }
+  let stop = false;
+  for (let phone of phoneNumber) {
+    for (let otherPhone of phoneNumber) {
+      if (phone === otherPhone) {
+        count += 1;
       }
-      if (count >= 3) {
-        stop = true;
-      }
-      count = 0;
     }
-    return stop
+    if (count >= 3) {
+      stop = true;
+    }
+    count = 0;
+  }
+  return stop
 }
 
 function numbersArePositiveAndLessThanNine(phoneNumber) {
@@ -174,12 +174,18 @@ function abs(num1, num2) {
 function sum(num1, num2) {
   return num1 + num2;
 }
+
+function condition(num1, num2, num3) {
+  return (num1 < sum(num2, num3)) && (num1 > abs(num2, num3));
+}
+
+function checker(lineA, lineB, lineC) {
+  return condition(lineA, lineB, lineC) && condition(lineB, lineA, lineC) && condition(lineC, lineA, lineB)
+}
 // Desafio 12
 function triangleCheck(lineA, lineB, lineC) {
   if (lineA > 0 && lineB > 0 && lineC > 0) {
-    if (
-      (lineA < sum(lineB, lineC)) && (lineA > abs(lineB, lineC)) && (lineB < sum(lineA, lineC)) && (lineB > abs(lineA, lineC)) && (lineC < sum(lineB, lineA)) && (lineC > abs(lineA, lineB))
-    ) {
+    if (checker(lineA, lineB, lineC)) {
       return true;
     }
     return false;
